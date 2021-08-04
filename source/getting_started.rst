@@ -7,28 +7,22 @@
 .. code-block:: python
    :emphasize-lines: 1-3,5
 
-   def some_function():
-       interesting = False
-       print 'This line is highlighted.'
-       print 'This one is not...'
-       print '...but this one is.'
+   from gc_qdk.main import GCoreQDK
 
-Из PyPi
-----------------------------------
-Для установки GC QDK потребуется pip, убедитесь в его наличии, затем в командной
-строке введите:
 
-Windows:
-    pip install gc_qdk
+   """ Создаем экземпляр класса, с помощью методов которого мы будем взаимодействовать с GCore. """
+   # Указываем IP адрес компьютера (host_ip), на котором работает Gravity Compound.
+   # Указываем порт (host_port), который был назначен для QPI GC.
+   qdk_inst = GCoreQDK(host_ip='192.168.100.109', host_port=15500)
 
-Linux:
-    pip3 install gc_qdk
+   # Выполняем подключение.
+   qdk_inst.make_connection()
 
-Требуемые пакеты
-----------------------------------
-Все требуемые пакеты устанавливаются автоматически.
-Список пакетов:
+   # Выплняем команду (например, на получение статуса готовности GC на начало взвешивания).
+   qdk_inst.get_status()
 
-#. QDK (для наследования)
-#. psycopg2
+   # Получаем ответ
+   response = qdk_inst.get_data()
+   print(response)   # True|False
 
+Для получения полного перечня функций смотрите :ref:`rst-markup-label`

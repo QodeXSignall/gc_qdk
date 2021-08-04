@@ -14,6 +14,7 @@ Welcome to Gravity Compound Qodex Development Kit's documentation!
    general_description
    installation
    getting_started
+   functions
 
    :caption: Contents:
 
@@ -26,3 +27,4 @@ Indices and tables
 * :ref:`genindex`
 * :ref:`modindex`
 * :ref:`search`
+
