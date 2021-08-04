@@ -65,6 +65,7 @@ html_theme = 'classic'
 html_show_sphinx = False
 
 # Additional stuff for the LaTeX preamble.
+{
 'preamble': '\\usepackage[utf8]{inputenc}',
 'babel': '\\usepackage[russian]{babel}',
 'cmappkg': '\\usepackage{cmap}',
