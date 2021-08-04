@@ -65,10 +65,4 @@ html_theme = 'classic'
 html_show_sphinx = False
 
 # Additional stuff for the LaTeX preamble.
-{
-'preamble': '\\usepackage[utf8]{inputenc}',
-'babel': '\\usepackage[russian]{babel}',
-'cmappkg': '\\usepackage{cmap}',
-'fontenc': '\\usepackage[T1,T2A]{fontenc}',
-'utf8extra':'\\DeclareUnicodeCharacter{00A0}{~}',
-}
+latex_engine = 'xelatex'
