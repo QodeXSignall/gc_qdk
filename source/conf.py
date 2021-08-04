@@ -70,5 +70,5 @@ html_show_sphinx = False
 'babel': '\\usepackage[russian]{babel}',
 'cmappkg': '\\usepackage{cmap}',
 'fontenc': '\\usepackage[T1,T2A]{fontenc}',
-'utf8extra':'\\DeclareUnicodeCharacter{00A0}{\\nobreakspace}',
+'utf8extra':'\\DeclareUnicodeCharacter{00A0}{~}',
 }
