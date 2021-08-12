@@ -65,4 +65,4 @@ html_theme = 'classic'
 html_show_sphinx = False
 
 # Additional stuff for the LaTeX preamble.
-latex_engine = 'xelatex'
+#latex_engine = 'xelatex'

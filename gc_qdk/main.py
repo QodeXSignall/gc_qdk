@@ -2,20 +2,57 @@
 методов для взаимодействия с Gravity Compound. Используется как графическим
 интерфейсом весовщика, так и WServer."""
 from qdk.main import QDK
+import threading
+from traceback import format_exc
 
 
 class GCoreQDK(QDK):
     """ Главный класс, содержащий все методы для взаимодействия с GCore """
     def __init__(self, host_ip, host_port, host_login='login',
-                 host_password='pass', *args, **kwargs):
+                 host_password='pass', start_resp_operator=False,
+                 *args, **kwargs):
+        """
+        Инициация приложения.
+        :param host_ip: IP адрес машины с GCore
+        :param host_port: Port GCore QPI
+        :param host_login: Логин, если требуется
+        :param host_password: Пароль, если требуется
+        :param start_resp_operator: Запустить или нет встроенный обработчк
+            ответов от GCore QPI. Принимает либо False, либо словарь,
+            в котором ключом является метод GCore QPI, вернувший ответ,
+            а ключом - функция, которая должна этот ответ обрабатывать.
+            (значение ключа info, из словаря, который отправляет QPI)
+        :param args:
+        :param kwargs:
+        """
         super().__init__(host_ip, host_port, host_login, host_password,
                          *args, **kwargs)
+        self.resp_operator_dict = start_resp_operator
 
-    def start_round(self, car_number, course, car_choose_mode,
-                    dlinnomer=False, polomka=False,
-                    carrier=None, trash_cat=None, trash_type=None, notes=None,
-                    operator=None, duo_polygon=None):
-        """ Отдать команду на начало раунда взвешивания """
+    def start_round(self, car_number: str, course: str, car_choose_mode: str,
+                    dlinnomer: bool = False, polomka: bool = False,
+                    carrier: int = None, trash_cat: int = None,
+                    trash_type: int = None, notes: str = None,
+                    operator: int = None, duo_polygon: int = None):
+        """
+        Отдать команду на начало раунда взвешивания
+        :param car_number: гос. номер, в строковом представлении,
+        типа "A111AA702"
+        :param course: направление, с какой стороны стоит машина
+        (external/internal)
+        :param car_choose_mode: спсособ инициации заезда (auto/manual),
+        если auto - значит система сама увидела машину,
+        если manual - значит заезд инициируют вручную
+        :param dlinnomer: Спец. проткол "Длинномер" (True/False)
+        :param polomka: Спец. протокол "Поломка" (True/False)
+        :param carrier: ID перевозчика
+        :param trash_cat: ID категории груза
+        :param trash_type: ID вида груза
+        :param notes: Комментарий весовщика
+        :param operator: ID весовщика
+        :param duo_polygon: ID объекта, принимающего груз
+        :return:
+        """
         self.execute_method('start_weight_round', car_number=car_number,
                             course=course, car_choose_mode=car_choose_mode,
                             spec_protocol_dlinnomer_bool=polomka,
@@ -273,3 +310,51 @@ class GCoreQDK(QDK):
         """
         self.execute_method('get_auto_info', car_number=car_number,
                             auto_id=auto_id)
+
+    def get_record_comments(self, record_id: int):
+        """
+        Вернуть все комментарии весовщика к данному заезду
+        :param record_id: ID заезда
+        :return: словарь, где ключ - название комментария,
+            значение - его содержимое
+        """
+        self.execute_method('get_record_comments', record_id=record_id)
+
+    def start_response_operator(self):
+        """
+        Запустить оператор ответов
+        :return:
+        """
+        threading.Thread(target=self.response_operator,
+                         args=(self.resp_operator_dict,)).start()
+
+    def response_operator(self, function_dist):
+        """
+        Обработчик ответов от GCore. Запускается параллельным потоком.
+        :param function_dist: словарь,
+        где ключом является метод, который вернул ответ, а значением - какая
+        то функция, которая должна такой ответ обработать.
+        При этом функции передается весь этот ответ
+        :return: возвращает результат выполнения функции в значении ключа
+        """
+        while self.resp_operator_dict:
+            response = self.get_data()
+            if not response or type(response) is not dict:
+                continue
+            response_method_name = response['core_method']
+            print(response)
+            try:
+                bound_function = function_dist[response_method_name]
+                if response['status']:
+                    bound_function_result = bound_function(response['info'])
+                    execution_result = bound_function_result
+                else:
+                    execution_result = response['info']
+            except KeyError:
+                error_msg = 'Не найден обработчик для ответов от метода {}.' \
+                            '\n({})'
+                execution_result = error_msg.format(response_method_name,
+                                                    format_exc())
+            print('Результат выполненения {}: {}'.format(response_method_name,
+                                                         execution_result))
+
