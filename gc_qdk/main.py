@@ -10,6 +10,7 @@ class GCoreQDK(QDK):
     """ Главный класс, содержащий все методы для взаимодействия с GCore """
     def __init__(self, host_ip, host_port, host_login='login',
                  host_password='pass', start_resp_operator=False,
+                 only_show_response=False,
                  *args, **kwargs):
         """
         Инициация приложения.
@@ -28,6 +29,15 @@ class GCoreQDK(QDK):
         super().__init__(host_ip, host_port, host_login, host_password,
                          *args, **kwargs)
         self.resp_operator_dict = start_resp_operator
+        self.only_show_response = only_show_response
+
+    def set_resp_operator_dict(self, response_operator_dict: dict):
+        """
+        Установить словарь операторов ответов
+        :param response_operator_dict:
+        :return:
+        """
+        self.resp_operator_dict = response_operator_dict
 
     def start_round(self, car_number: str, course: str, car_choose_mode: str,
                     dlinnomer: bool = False, polomka: bool = False,
@@ -328,6 +338,42 @@ class GCoreQDK(QDK):
         threading.Thread(target=self.response_operator,
                          args=(self.resp_operator_dict,)).start()
 
+    def block_external_photocell(self):
+        """
+        Заблокировать внешний фотоэлемент
+        :return:
+        """
+        self.execute_method('block_external_photocell')
+
+    def unblock_external_photocell(self):
+        """
+        Разблокировать внешний фотоэлемент
+        :return:
+        """
+        self.execute_method('unblock_external_photocell')
+
+    def block_internal_photocell(self):
+        """
+        Заблокировать внутренний фотоэлемент
+        :return:
+        """
+        self.execute_method('block_internal_photocell')
+
+    def unblock_internal_photocell(self):
+        """
+        Разблокировать внутренний фотоэлемент
+        :return:
+        """
+        self.execute_method('unblock_internal_photocell')
+
+    def delete_record(self, record_id: str):
+        """
+        Удалить заезд
+        :param record_id: Идентификатор заезда
+        :return:
+        """
+        self.execute_method('delete_record', record_id=record_id)
+
     def response_operator(self, function_dist):
         """
         Обработчик ответов от GCore. Запускается параллельным потоком.
@@ -339,14 +385,19 @@ class GCoreQDK(QDK):
         """
         while self.resp_operator_dict:
             response = self.get_data()
-            if not response or type(response) is not dict:
+            print("RESPONSE:", response)
+            if not response:
+                break
+            if type(response) is not dict:
                 continue
             response_method_name = response['core_method']
-            print(response)
+            if self.only_show_response:
+                continue
             try:
-                bound_function = function_dist[response_method_name]
+                bound_function = function_dist[response_method_name]['method']
                 if response['status']:
-                    bound_function_result = bound_function(response['info'])
+                    bound_function_result = bound_function(self,
+                                                           **response['info'])
                     execution_result = bound_function_result
                 else:
                     execution_result = response['info']
@@ -357,4 +408,3 @@ class GCoreQDK(QDK):
                                                     format_exc())
             print('Результат выполненения {}: {}'.format(response_method_name,
                                                          execution_result))
-

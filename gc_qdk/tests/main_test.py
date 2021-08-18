@@ -202,8 +202,35 @@ class MainTest(unittest.TestCase):
         print(car_number)
         self.assertTrue(type(car_number) == str)
 
-    def test_response_operator(self):
-        pass
+    def test_photocells_manipulating(self):
+        self.qdk.block_external_photocell()
+        response = self.qdk.get_data()
+        self.assertTrue(response['status'],
+                        response['info']['point_name'] == 'EXTERNAL_PHOTOCELL'
+                        and response['info']['func_name'] == 'lock_point')
+
+        self.qdk.unblock_external_photocell()
+        response = self.qdk.get_data()
+        self.assertTrue(response['status'],
+                        response['info']['point_name'] == 'EXTERNAL_PHOTOCELL'
+                        and response['info']['func_name'] == 'normal_point')
+
+        self.qdk.block_internal_photocell()
+        response = self.qdk.get_data()
+        self.assertTrue(response['status'],
+                        response['info']['point_name'] == 'INTERNAL_PHOTOCELL'
+                        and response['info']['func_name'] == 'lock_point')
+
+        self.qdk.unblock_internal_photocell()
+        response = self.qdk.get_data()
+        self.assertTrue(response['status'],
+                        response['info']['point_name'] == 'INTERNAL_PHOTOCELL'
+                        and response['info']['func_name'] == 'normal_point')
+
+    def test_get_record_info(self):
+        self.qdk.get_record_info(963)
+        resp = self.qdk.get_data()
+        self.assertTrue(resp['status'])
 
 if __name__ == '__main__':
     unittest.main()
