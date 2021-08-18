@@ -7,11 +7,11 @@ from gc_qdk.tests.round_tests import functions
 class MainTest(unittest.TestCase):
     """ Основные тесты """
     def __init__(self, *args, **kwargs):
-        super(MainTest, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         self.qdk = GCoreQDK('192.168.100.118', 4455, 'login', 'pass')
         self.qdk.make_connection()
 
-    @unittest.SkipTest
+    #@unittest.SkipTest
     def test_start_round(self):
         self.qdk.start_round('В060ХА702', 'external', 'auto')
         count = 0
@@ -32,7 +32,7 @@ class MainTest(unittest.TestCase):
         record_id = 527
         add_comm = 'ADD COMM'
         self.qdk.add_comment(record_id, add_comm)
-        self.qdk.get_data()
+        print(self.qdk.get_data())
         self.qdk.get_record_comments(527)
         response = self.qdk.get_data()
         self.assertTrue(response['info']['record'] == record_id and
@@ -72,14 +72,17 @@ class MainTest(unittest.TestCase):
     def test_close_opened_record(self):
         self.qdk.close_opened_record(record_id=751)
         response = self.qdk.get_data()
+        print('success', response)
         self.assertEqual(response['info'], 751)
         self.qdk.close_opened_record(record_id=0)
         response = self.qdk.get_data()
+        print('fail', response)
         self.assertTrue(not response['info'])
 
     def test_get_unfinished_records(self):
         self.qdk.get_unfinished_records()
         unfinished_records = self.qdk.get_data()
+        print(unfinished_records)
         self.assertTrue(type(unfinished_records['info']) is list
                         or unfinished_records['info'] is None)
 
@@ -93,11 +96,19 @@ class MainTest(unittest.TestCase):
         settings_table = self.qdk.get_data()
         print('settings_table_result', settings_table)
         self.assertEqual(settings_table['info']['status'], 'failed')
+        self.qdk.get_table_info('gcore_settasdaasdadasdings')
+        settings_table = self.qdk.get_data()
+        print('no_result', settings_table)
+        self.assertEqual(settings_table['info']['status'], 'failed')
 
     def test_get_last_event(self):
         self.qdk.get_last_event(auto_id=382)
         response = self.qdk.get_data()
+        print(response)
         self.assertEqual(type(response), dict)
+        self.qdk.get_last_event(auto_id=0)
+        response_fail = self.qdk.get_data()
+        print(response_fail)
 
     def test_open_external_barrier(self):
         self.qdk.open_external_barrier()
@@ -127,22 +138,26 @@ class MainTest(unittest.TestCase):
     def test_auth_user(self):
         self.qdk.try_auth_user('test_user_1', '123')
         success_auth_response = self.qdk.get_data()
-        self.assertTrue(success_auth_response['info']['status'] == 'success',
-                        success_auth_response['info']['info'][0]['auth_status'])
+        self.assertTrue(success_auth_response['info']['status']
+                        and type(success_auth_response['info']['info']) == int)
         self.qdk.try_auth_user('test_user_1', '12345')
         fail_auth_response = self.qdk.get_data()
-        self.assertTrue(fail_auth_response['info']['status'] == 'failed',
-                        not fail_auth_response['info']['info'])
+        print('fail', fail_auth_response)
+        self.assertTrue(not fail_auth_response['info']['status']
+                        and not fail_auth_response['info'])
+
 
     def test_fix_gui_start(self):
         self.qdk.capture_gui_launched()
         response = self.qdk.get_data()
-        self.assertTrue(response['info']['status'] == 'success')
+        print(response)
+        self.assertTrue(response['status'])
 
     def test_fix_gui_terminated(self):
         self.qdk.capture_gui_terminated()
         response = self.qdk.get_data()
-        self.assertTrue(response['info']['status'] == 'success')
+        print(response)
+        self.assertTrue(response['status'])
 
     def test_add_carrier(self):
         self.qdk.add_carrier('test_carrier_1')
@@ -195,6 +210,7 @@ class MainTest(unittest.TestCase):
         self.qdk.add_auto(car_number='В000ВВ001', wserver_id=9999999, model=0,
                           rfid='AAAAAA0004', id_type='tails', rg_weight=0)
         add_auto_response = self.qdk.get_data()
+        print(add_auto_response)
         self.assertTrue(add_auto_response['info']['status'] == 'success')
 
     def test_get_random(self):
@@ -230,7 +246,18 @@ class MainTest(unittest.TestCase):
     def test_get_record_info(self):
         self.qdk.get_record_info(963)
         resp = self.qdk.get_data()
-        self.assertTrue(resp['status'])
+        print(resp)
+        self.assertTrue(resp['status'] and type(resp['info']) == dict)
+        self.qdk.get_record_info(0)
+        resp = self.qdk.get_data()
+        self.assertTrue(not resp['info'])
+
+    def test_get_auto_info(self):
+        self.qdk.get_auto_info(auto_id=0)
+        resp_fail = self.qdk.get_data()
+        self.qdk.get_auto_info(auto_id=59)
+        resp_succ = self.qdk.get_data()
+
 
 if __name__ == '__main__':
     unittest.main()

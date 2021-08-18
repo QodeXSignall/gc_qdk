@@ -1,19 +1,21 @@
 """ Модуль, содержащий основной класс GCoreQDK, являющийся носителем всех
 методов для взаимодействия с Gravity Compound. Используется как графическим
 интерфейсом весовщика, так и WServer."""
-from qdk.main import QDK
 import threading
 from traceback import format_exc
+from qdk.main import QDK
 
 
 class GCoreQDK(QDK):
     """ Главный класс, содержащий все методы для взаимодействия с GCore """
+
     def __init__(self, host_ip, host_port, host_login='login',
                  host_password='pass', start_resp_operator=False,
                  only_show_response=False,
                  *args, **kwargs):
         """
         Инициация приложения.
+
         :param host_ip: IP адрес машины с GCore
         :param host_port: Port GCore QPI
         :param host_login: Логин, если требуется
@@ -34,6 +36,7 @@ class GCoreQDK(QDK):
     def set_resp_operator_dict(self, response_operator_dict: dict):
         """
         Установить словарь операторов ответов
+
         :param response_operator_dict:
         :return:
         """
@@ -46,13 +49,14 @@ class GCoreQDK(QDK):
                     operator: int = None, duo_polygon: int = None):
         """
         Отдать команду на начало раунда взвешивания
+
         :param car_number: гос. номер, в строковом представлении,
-        типа "A111AA702"
+            типа "A111AA702"
         :param course: направление, с какой стороны стоит машина
-        (external/internal)
+            (external/internal)
         :param car_choose_mode: спсособ инициации заезда (auto/manual),
-        если auto - значит система сама увидела машину,
-        если manual - значит заезд инициируют вручную
+            если auto - значит система сама увидела машину,
+            если manual - значит заезд инициируют вручную
         :param dlinnomer: Спец. проткол "Длинномер" (True/False)
         :param polomka: Спец. протокол "Поломка" (True/False)
         :param carrier: ID перевозчика
@@ -61,7 +65,14 @@ class GCoreQDK(QDK):
         :param notes: Комментарий весовщика
         :param operator: ID весовщика
         :param duo_polygon: ID объекта, принимающего груз
-        :return:
+
+        :return: В случае успеха:
+                {'status': True, 'info': 'Поток выполнения запущен успешно',
+                'record_id': *id: int*};
+
+            В случае провала (уже активен заезд):
+                {'status': False, 'info': 'GCore занят в данный момент', 'record_id':
+                *id: int*}
         """
         self.execute_method('start_weight_round', car_number=car_number,
                             course=course, car_choose_mode=car_choose_mode,
@@ -72,15 +83,22 @@ class GCoreQDK(QDK):
                             operator=operator, duo_polygon=duo_polygon)
 
     def get_status(self):
-        """ Вернуть состояние готовности весовой площадки (True|False) """
+        """ Вернуть состояние готовности весовой площадки (есть активные заезды
+            или нет)
+        :return: False/True"""
         self.execute_method('get_status')
 
     def add_comment(self, record_id: int, comment: str):
         """
-        Добавить комментарий к существующей записи.
+        Добавить комментарий к существующему заезду.
+
         :param record_id: id записи
         :param comment: добавочный комментарий
         :return:
+            В случае успеха:
+                {'status': 'success', 'info': [(*id: int*,)]}
+            В случае провала:
+                {'status': 'failed', 'info': Python Traceback}
         """
         self.execute_method('add_comment', record_id=record_id,
                             comment=comment)
@@ -91,19 +109,28 @@ class GCoreQDK(QDK):
                              polygon: int = None, auto_id: int = None):
         """
         Изменить запись. Можно менять все основные параметры.
+
         :param record_id: ID этой записи
         :param car_number: Гос.номер, на который надо поменять (если такой
-        машиныинет, она будет зарегана, в любом случае,
-        в записи будет отображаться только ссылка на это авто.
+            машины нет, она будет зарегана, в любом случае,
+            в записи будет отображаться только ссылка на это авто.
         :param carrier: ID перевозчика
         :param trash_cat_id: ID категории груза
         :param trash_type_id: ID вида груза
         :param comment: комментарий, который нужно поменять
         :param polygon: Полигон
         :param auto_id: Можно указать ID авто напямую (но, как правило, через
-        графический интерфейс поступает гос.номер в виде строки
-        (см. car_number))
+            графический интерфейс поступает гос.номер в виде строки
+            (см. car_number))
         :return:
+            В случае успеха:
+                {'status': 'success', 'info': {'status': 'success',
+                    'info': 'Данные успешно изменены'}}
+            В случае провала:
+                {'status': 'failed', 'info': Python Traceback}
+            Либо:
+                None - если не найден заезд с таким ID
+
         """
         self.execute_method('change_opened_record', record_id=record_id,
                             car_number=car_number, carrier=carrier,
@@ -114,16 +141,28 @@ class GCoreQDK(QDK):
     def close_opened_record(self, record_id: int):
         """
         Закрыть открытую запись (у которой есть только брутто)
+
         :param record_id: ID этой записи
         :return:
+            В случае успеха:
+                id: int
+            В случае провала:
+                None
         """
         self.execute_method('close_opened_record', record_id=record_id)
 
     def get_unfinished_records(self):
         """
         Вернуть список, содержащий словари, каждый из которых описывает заезд,
-        который еще не завершен (без тары)
+            который еще не завершен (без тары)
+
         :return:
+            Если есть незакрытые заезды:
+                Вернет список словарь, где ключом
+                является поле из wdb.records, а значением - содержимое поля
+            Если незакрытых заездов нет:
+                None
+
         """
         self.execute_method('get_unfinished_records')
 
@@ -134,6 +173,7 @@ class GCoreQDK(QDK):
         Получить историю заездов. Если ни один аргумент не указан, то вернется
         история за сегодняшний день, без каких либо фильтров. Указанные же
         аргументы - это фильтры, они суммируются в любом порядке и количестве.
+
         :param time_start: с какой даты учитывать
         :param time_end: по какую дату учитывать
         :param trash_cat: фильтрация по категории груза
@@ -143,9 +183,14 @@ class GCoreQDK(QDK):
         :param polygon: фильтрация по объекту-приемщику
         :param alerts: фильтрация по наличию алертов
         :param what_time: какую дату брать за учетную (time_in|time_out).
-        То есть, time_start и time_end могут быть как время въезда, так и
-        время выезда (по умолчанию, это время въезда)
+            То есть, time_start и time_end могут быть как время въезда, так и
+            время выезда (по умолчанию, это время въезда)
         :return:
+            Если есть заезды по указанным фильтрам:
+                Вернет список словарь, где ключом
+                является поле из wdb.records, а значением - содержимое поля
+            Если по указанным фильтрам заездов нет:
+                None
         """
         self.execute_method('get_history', time_start=time_start,
                             time_end=time_end, trash_cat=trash_cat,
@@ -156,14 +201,20 @@ class GCoreQDK(QDK):
     def get_table_info(self, table_name: str, only_active=True):
         """
         Вернуть данные о таблице из wdb.
-        Внимание! Не все таблицы доступны, как и не все поля, доступ по
-        таблице происходит из белого списка, а по полям, не отправляются те
-        поля, которые отмечены в черном списке (например, поле users.password).
-        Механизм допуска прописан в модуле gravity_data_worker.
+            Внимание! Не все таблицы доступны, как и не все поля, доступ по
+            таблице происходит из белого списка, а по полям, не отправляются те
+            поля, которые отмечены в черном списке (например, поле users.password).
+            Механизм допуска прописан в модуле gravity_data_worker.
+
         :param table_name: Название нужной таблицы
         :param only_active: Возвращать ли только те поля, у которых поле active
-        положительно?
+            положительно?
         :return:
+            В случае успеха:
+                {'status': 'success', info: [*список заездов*]}
+            В случае, когда к данным таблицы доступ запрещен:
+                {'status': 'failed', 'info': 'У вас нет доступа к просмотру
+                    информации с данной таблицы!', 'tablename': *tablename*}
         """
         self.execute_method('get_table_info', tablename=table_name,
                             only_active=only_active)
@@ -171,44 +222,55 @@ class GCoreQDK(QDK):
     def get_last_event(self, auto_id: int):
         """
         Получить данные о последнем заезде авто с ID (auto_id)
+
         :param auto_id: ID авто, по котором нужна информация
-        :return: Возвращает словарь с данными о заезде
+        :return:
+            Если машина найдена:
+                Возвращает словарь с данными о перевозчике, виде груза,
+                категории груза и времени с последнего заезда
+            Если же заезда с такой машины не обнаружено:
+                None
         """
         self.execute_method('get_last_event', auto_id=auto_id)
 
     def open_external_barrier(self):
         """
         Открыть внешний шлагбаум
-        :return:
+
+        :return: {'operation': 'open', 'barrier_name': 'EXTERNAL_GATE'}
         """
         self.operate_barrier(barrier_name='EXTERNAL_GATE', operation='open')
 
     def close_external_barrier(self):
         """
         Закрыть внешний шлагбаум
-        :return:
+
+        :return: {'operation': 'close', 'barrier_name': 'EXTERNAL_GATE'}
         """
         self.operate_barrier(barrier_name='EXTERNAL_GATE', operation='close')
 
     def open_internal_barrier(self):
         """
         Открыть внешний шлагбаум
-        :return:
+
+        :return: {'operation': 'open', 'barrier_name': 'INTERNAL_GATE'}
         """
         self.operate_barrier(barrier_name='INTERNAL_GATE', operation='open')
 
     def close_internal_barrier(self):
         """
         Закрыть внешний шлагбаум
-        :return:
+
+        :return: {'operation': 'close', 'barrier_name': 'INTERNAL_GATE'}
         """
         self.operate_barrier(barrier_name='INTERNAL_GATE', operation='close')
 
     def operate_barrier(self, barrier_name: str, operation: str):
         """
         Произвести работу со шлагбаумами (открыть или закрыть)
+
         :param barrier_name: Название шлагбаума. Обычно он носит вид,
-        типа "НАПРАВЛЕНИЕ_ИМЯ" (EXTERNAL_BARRIER)
+            типа "НАПРАВЛЕНИЕ_ИМЯ" (EXTERNAL_BARRIER)
         :param operation: (close|open) Открыть или закрыть шлагбаум
         :return:
         """
@@ -218,28 +280,40 @@ class GCoreQDK(QDK):
 
     def try_auth_user(self, username: str, password: str):
         """ Попытка аутентификации весовщика через графический интерфейс
+
         :param username: Логин пользователя
         :param password: Пароль пользователя
-        :return: Возвращает либо {'status'"""
+        :return:
+            В случае успешной аутентификации юзера:
+                {'status': True, 'info': id: int}
+            В случае, если логин или пароль не верные:
+                {'status': False, 'info': None}
+        """
         self.execute_method('try_auth_user', username=username,
                             password=password)
 
     def capture_gui_launched(self):
-        """ Зафиксировать запуск графического интерфейса в логе """
+        """ Зафиксировать запуск графического интерфейса в логе
+        :return: [(id)] (id записи из cm_events_log)"""
+
         self.execute_method('capture_cm_launched')
 
     def capture_gui_terminated(self):
-        """ Зафиксировать отключение графического интерфейса в логе """
+        """ Зафиксировать отключение графического интерфейса в логе
+        :return: [(id)] (id записи из cm_events_log)"""
+
         self.execute_method('capture_cm_terminated')
 
     def restart_core(self):
         """ Перезапустить Gravity Core Compound """
+
         self.execute_method('restart_core')
 
     def add_carrier(self, name, inn=None, kpp=None, ex_id=None, status=None,
                     wserver_id=None):
         """
         Добавить нового перевозчика
+
         :param name: Название перевозчика
         :param inn: ИНН перевозчика
         :param kpp: КПП перевозчика
@@ -247,6 +321,10 @@ class GCoreQDK(QDK):
         :param status: Статус (действующий/недействующий)
         :param wserver_id: ID перевозчика в базе GDB
         :return:
+            В случае успеха:
+                {'status': 'success', 'info': [(*id: int*,)]}
+            В случае провала:
+                {'status': 'failed', 'info': Python Traceback}
         """
         self.execute_method('add_new_carrier', name=name, inn=inn, kpp=kpp,
                             ex_id=ex_id, status=status, wserver_id=wserver_id)
@@ -255,6 +333,7 @@ class GCoreQDK(QDK):
                  rg_weight):
         """
         Добавить новое авто
+
         :param car_number: Гос.номер авто
         :param wserver_id: ID авто из базы GDB
         :param model: Модель авто
@@ -262,6 +341,10 @@ class GCoreQDK(QDK):
         :param id_type: Протокол авто
         :param rg_weight: Справочный вес тары авто
         :return:
+            В случае успеха:
+                {'status': 'success', 'info': [(*id: int*,)]}
+            В случае провала:
+                {'status': 'failed', 'info': Python Traceback}
         """
         self.execute_method('add_auto', car_number=car_number, model=model,
                             rfid=rfid, id_type=id_type, rg_weight=rg_weight,
@@ -270,9 +353,14 @@ class GCoreQDK(QDK):
     def add_trash_cat(self, cat_name, wserver_id):
         """
         Добавить новую категорию груза
+
         :param cat_name: Название категории груза
         :param wserver_id: ID из базы GDB
         :return:
+            В случае успеха:
+                {'status': 'success', 'info': [(*id: int*,)]}
+            В случае провала:
+                {'status': 'failed', 'info': Python Traceback}
         """
         self.execute_method('add_trash_cat', cat_name=cat_name,
                             wserver_id=wserver_id)
@@ -280,11 +368,16 @@ class GCoreQDK(QDK):
     def add_trash_type(self, type_name, wserver_id, wserver_cat_id):
         """
         Добавить новый вид груза
+
         :param type_name: Название вида груза
         :param wserver_id: ID вида груза из GDB
         :param wserver_cat_id: ID категории груза из GDB, за которым закреплен
         вид груза
         :return:
+            В случае успеха:
+                {'status': 'success', 'info': [(*id: int*,)]}
+            В случае провала:
+                {'status': 'failed', 'info': Python Traceback}
         """
         self.execute_method('add_trash_type', type_name=type_name,
                             wserver_cat_id=wserver_cat_id,
@@ -293,11 +386,16 @@ class GCoreQDK(QDK):
     def add_operator(self, full_name, username, password, wserver_id):
         """
         Добавить нового пользователя (весовщика)
+
         :param full_name: Полное имя (ФИО)
         :param username: Логин пользователя
         :param password: Пароль пользователя
         :param wserver_id: его ID из базы GDB
         :return:
+            В случае успеха:
+                {'status': 'success', 'info': [(*id: int*,)]}
+            В случае провала:
+                {'status': 'failed', 'info': Python Traceback}
         """
         self.execute_method('add_operator', full_name=full_name,
                             username=username, password=password,
@@ -306,17 +404,27 @@ class GCoreQDK(QDK):
     def get_record_info(self, record_id: int):
         """
         Получить информацию о заезде по его ID
+
         :param record_id: ID записи
-        :return: {ID: int, auto: auto_id, time_in: date, ...}
+        :return:
+            Если есть запись с таким ID:
+                {ID: int, auto: auto_id, time_in: date, ...}
+            Если же нет:
+                None
         """
         self.execute_method('get_record_info', record_id=record_id)
 
     def get_auto_info(self, car_number: str = None, auto_id: int = None):
         """
         Вернуть информацию об авто по его гос.номеру
+
         :param auto_id: Идентификатор авто
         :param car_number: Гос. номер авто
         :return:
+            В случае, если есть данные об авто:
+                Возвращает словарь с данными
+            В случае, если данных нет:
+                Возвращает None
         """
         self.execute_method('get_auto_info', car_number=car_number,
                             auto_id=auto_id)
@@ -324,6 +432,7 @@ class GCoreQDK(QDK):
     def get_record_comments(self, record_id: int):
         """
         Вернуть все комментарии весовщика к данному заезду
+
         :param record_id: ID заезда
         :return: словарь, где ключ - название комментария,
             значение - его содержимое
@@ -333,6 +442,7 @@ class GCoreQDK(QDK):
     def start_response_operator(self):
         """
         Запустить оператор ответов
+
         :return:
         """
         threading.Thread(target=self.response_operator,
@@ -341,6 +451,7 @@ class GCoreQDK(QDK):
     def block_external_photocell(self):
         """
         Заблокировать внешний фотоэлемент
+
         :return:
         """
         self.execute_method('block_external_photocell')
@@ -348,6 +459,7 @@ class GCoreQDK(QDK):
     def unblock_external_photocell(self):
         """
         Разблокировать внешний фотоэлемент
+
         :return:
         """
         self.execute_method('unblock_external_photocell')
@@ -355,6 +467,7 @@ class GCoreQDK(QDK):
     def block_internal_photocell(self):
         """
         Заблокировать внутренний фотоэлемент
+
         :return:
         """
         self.execute_method('block_internal_photocell')
@@ -362,6 +475,7 @@ class GCoreQDK(QDK):
     def unblock_internal_photocell(self):
         """
         Разблокировать внутренний фотоэлемент
+
         :return:
         """
         self.execute_method('unblock_internal_photocell')
@@ -369,6 +483,7 @@ class GCoreQDK(QDK):
     def delete_record(self, record_id: str):
         """
         Удалить заезд
+
         :param record_id: Идентификатор заезда
         :return:
         """
@@ -377,10 +492,11 @@ class GCoreQDK(QDK):
     def response_operator(self, function_dist):
         """
         Обработчик ответов от GCore. Запускается параллельным потоком.
-        :param function_dist: словарь,
-        где ключом является метод, который вернул ответ, а значением - какая
-        то функция, которая должна такой ответ обработать.
-        При этом функции передается весь этот ответ
+
+        :param function_dist: словарь, где ключом является метод,
+            который вернул ответ, а значением - какая то функция,
+            которая должна такой ответ обработать.
+            При этом функции передается весь этот ответ
         :return: возвращает результат выполнения функции в значении ключа
         """
         while self.resp_operator_dict:
@@ -388,7 +504,7 @@ class GCoreQDK(QDK):
             print("RESPONSE:", response)
             if not response:
                 break
-            if type(response) is not dict:
+            if not isinstance(response, dict):
                 continue
             response_method_name = response['core_method']
             if self.only_show_response:

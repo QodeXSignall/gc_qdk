@@ -22,10 +22,3 @@ Welcome to Gravity Compound Qodex Development Kit's documentation!
 
 
 
-Indices and tables
-==================
-
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
-
