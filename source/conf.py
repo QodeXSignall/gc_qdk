@@ -66,4 +66,4 @@ html_theme = 'sphinx_rtd_theme'
 html_show_sphinx = False
 
 # Additional stuff for the LaTeX preamble.
-#latex_engine = 'xelatex'
+latex_engine = 'xelatex'
