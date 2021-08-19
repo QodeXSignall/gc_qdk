@@ -14,7 +14,6 @@ Welcome to Gravity Compound Qodex Development Kit's documentation!
    general_description
    installation
    getting_started
-   functions
    response
 
    :caption: Contents:

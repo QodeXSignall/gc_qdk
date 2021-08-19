@@ -67,4 +67,4 @@ html_show_sphinx = False
 
 # Additional stuff for the LaTeX preamble.
 latex_engine = 'xelatex'
-autoapi_dirs = ['../gc_qdk']
+autoapi_dirs = ['../gc_qdk/']

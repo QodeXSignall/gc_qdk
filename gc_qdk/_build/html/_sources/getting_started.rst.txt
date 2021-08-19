@@ -28,4 +28,4 @@
    response = qdk_inst.get_data()
    print(response)   # True|False
 
-Для получения полного перечня функций смотрите :ref:`rst-markup-label`
+Для получения полного перечня функций смотрите API Reference
