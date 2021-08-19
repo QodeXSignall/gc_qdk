@@ -1,1 +1,3 @@
 framed
+sphinx.ext.autodoc
+autodoc
