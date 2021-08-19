@@ -6,4 +6,3 @@
 .. autoclass:: gc_qdk.main.GCoreQDK
    :members:
    :undoc-members:
-
