@@ -1,0 +1,851 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="ru" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Реестр методов &mdash; документация Gravity Compound QDK 1</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/translations.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Алфавитный указатель" href="genindex.html" />
+    <link rel="search" title="Поиск" href="search.html" />
+    <link rel="next" title="Ответы от Gravity Compound" href="response.html" />
+    <link rel="prev" title="Начало работы" href="getting_started.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Gravity Compound QDK
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.0.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Поиск в документации" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="general_description.html">Общее описание</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Установка</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting_started.html">Начало работы</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Реестр методов</a></li>
+<li class="toctree-l1"><a class="reference internal" href="response.html">Ответы от Gravity Compound</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Gravity Compound QDK</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Реестр методов</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/functions.rst.txt" rel="nofollow"> Просмотреть исходный код страницы</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="rst-markup-label">
+<span id="id1"></span><h1>Реестр методов<a class="headerlink" href="#rst-markup-label" title="Ссылка на этот заголовок">¶</a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="gc_qdk.main.GCoreQDK">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">gc_qdk.main.</span></span><span class="sig-name descname"><span class="pre">GCoreQDK</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">host_ip</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">host_port</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">host_login</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'login'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">host_password</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'pass'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start_resp_operator</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">only_show_response</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gc_qdk.main.GCoreQDK" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Главный класс, содержащий все методы для взаимодействия с GCore</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="gc_qdk.main.GCoreQDK.add_auto">
+<span class="sig-name descname"><span class="pre">add_auto</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">car_number</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wserver_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rfid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rg_weight</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gc_qdk.main.GCoreQDK.add_auto" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Добавить новое авто</p>
+<dl class="field-list simple">
+<dt class="field-odd">Параметры</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>car_number</strong> – Гос.номер авто</p></li>
+<li><p><strong>wserver_id</strong> – ID авто из базы GDB</p></li>
+<li><p><strong>model</strong> – Модель авто</p></li>
+<li><p><strong>rfid</strong> – RFID номер авто</p></li>
+<li><p><strong>id_type</strong> – Протокол авто</p></li>
+<li><p><strong>rg_weight</strong> – Справочный вес тары авто</p></li>
+</ul>
+</dd>
+<dt class="field-even">Результат</dt>
+<dd class="field-even"><p><dl class="simple">
+<dt>В случае успеха:</dt><dd><p>{„status“: „success“, „info“: [(<em>id: int</em>,)]}</p>
+</dd>
+<dt>В случае провала:</dt><dd><p>{„status“: „failed“, „info“: Python Traceback}</p>
+</dd>
+</dl>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="gc_qdk.main.GCoreQDK.add_carrier">
+<span class="sig-name descname"><span class="pre">add_carrier</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inn</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kpp</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ex_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">status</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wserver_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gc_qdk.main.GCoreQDK.add_carrier" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Добавить нового перевозчика</p>
+<dl class="field-list simple">
+<dt class="field-odd">Параметры</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> – Название перевозчика</p></li>
+<li><p><strong>inn</strong> – ИНН перевозчика</p></li>
+<li><p><strong>kpp</strong> – КПП перевозчика</p></li>
+<li><p><strong>ex_id</strong> – ID перевозчика из внешней системы (например, 1С)</p></li>
+<li><p><strong>status</strong> – Статус (действующий/недействующий)</p></li>
+<li><p><strong>wserver_id</strong> – ID перевозчика в базе GDB</p></li>
+</ul>
+</dd>
+<dt class="field-even">Результат</dt>
+<dd class="field-even"><p><dl class="simple">
+<dt>В случае успеха:</dt><dd><p>{„status“: „success“, „info“: [(<em>id: int</em>,)]}</p>
+</dd>
+<dt>В случае провала:</dt><dd><p>{„status“: „failed“, „info“: Python Traceback}</p>
+</dd>
+</dl>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="gc_qdk.main.GCoreQDK.add_comment">
+<span class="sig-name descname"><span class="pre">add_comment</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">record_id</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">comment</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gc_qdk.main.GCoreQDK.add_comment" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Добавить комментарий к существующему заезду.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Параметры</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>record_id</strong> – id записи</p></li>
+<li><p><strong>comment</strong> – добавочный комментарий</p></li>
+</ul>
+</dd>
+<dt class="field-even">Результат</dt>
+<dd class="field-even"><p><dl class="simple">
+<dt>В случае успеха:</dt><dd><p>{„status“: „success“, „info“: [(<em>id: int</em>,)]}</p>
+</dd>
+<dt>В случае провала:</dt><dd><p>{„status“: „failed“, „info“: Python Traceback}</p>
+</dd>
+</dl>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="gc_qdk.main.GCoreQDK.add_operator">
+<span class="sig-name descname"><span class="pre">add_operator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">full_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">username</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">password</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wserver_id</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gc_qdk.main.GCoreQDK.add_operator" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Добавить нового пользователя (весовщика)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Параметры</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>full_name</strong> – Полное имя (ФИО)</p></li>
+<li><p><strong>username</strong> – Логин пользователя</p></li>
+<li><p><strong>password</strong> – Пароль пользователя</p></li>
+<li><p><strong>wserver_id</strong> – его ID из базы GDB</p></li>
+</ul>
+</dd>
+<dt class="field-even">Результат</dt>
+<dd class="field-even"><p><dl class="simple">
+<dt>В случае успеха:</dt><dd><p>{„status“: „success“, „info“: [(<em>id: int</em>,)]}</p>
+</dd>
+<dt>В случае провала:</dt><dd><p>{„status“: „failed“, „info“: Python Traceback}</p>
+</dd>
+</dl>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="gc_qdk.main.GCoreQDK.add_trash_cat">
+<span class="sig-name descname"><span class="pre">add_trash_cat</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cat_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wserver_id</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gc_qdk.main.GCoreQDK.add_trash_cat" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Добавить новую категорию груза</p>
+<dl class="field-list simple">
+<dt class="field-odd">Параметры</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>cat_name</strong> – Название категории груза</p></li>
+<li><p><strong>wserver_id</strong> – ID из базы GDB</p></li>
+</ul>
+</dd>
+<dt class="field-even">Результат</dt>
+<dd class="field-even"><p><dl class="simple">
+<dt>В случае успеха:</dt><dd><p>{„status“: „success“, „info“: [(<em>id: int</em>,)]}</p>
+</dd>
+<dt>В случае провала:</dt><dd><p>{„status“: „failed“, „info“: Python Traceback}</p>
+</dd>
+</dl>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="gc_qdk.main.GCoreQDK.add_trash_type">
+<span class="sig-name descname"><span class="pre">add_trash_type</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">type_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wserver_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wserver_cat_id</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gc_qdk.main.GCoreQDK.add_trash_type" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Добавить новый вид груза</p>
+<dl class="field-list simple">
+<dt class="field-odd">Параметры</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>type_name</strong> – Название вида груза</p></li>
+<li><p><strong>wserver_id</strong> – ID вида груза из GDB</p></li>
+<li><p><strong>wserver_cat_id</strong> – ID категории груза из GDB, за которым закреплен</p></li>
+</ul>
+</dd>
+</dl>
+<p>вид груза
+:return:</p>
+<blockquote>
+<div><dl class="simple">
+<dt>В случае успеха:</dt><dd><p>{„status“: „success“, „info“: [(<em>id: int</em>,)]}</p>
+</dd>
+<dt>В случае провала:</dt><dd><p>{„status“: „failed“, „info“: Python Traceback}</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="gc_qdk.main.GCoreQDK.block_external_photocell">
+<span class="sig-name descname"><span class="pre">block_external_photocell</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#gc_qdk.main.GCoreQDK.block_external_photocell" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Заблокировать внешний фотоэлемент</p>
+<dl class="field-list simple">
+<dt class="field-odd">Результат</dt>
+<dd class="field-odd"><p></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="gc_qdk.main.GCoreQDK.block_internal_photocell">
+<span class="sig-name descname"><span class="pre">block_internal_photocell</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#gc_qdk.main.GCoreQDK.block_internal_photocell" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Заблокировать внутренний фотоэлемент</p>
+<dl class="field-list simple">
+<dt class="field-odd">Результат</dt>
+<dd class="field-odd"><p></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="gc_qdk.main.GCoreQDK.capture_gui_launched">
+<span class="sig-name descname"><span class="pre">capture_gui_launched</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#gc_qdk.main.GCoreQDK.capture_gui_launched" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Зафиксировать запуск графического интерфейса в логе
+:return: [(id)] (id записи из cm_events_log)</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="gc_qdk.main.GCoreQDK.capture_gui_terminated">
+<span class="sig-name descname"><span class="pre">capture_gui_terminated</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#gc_qdk.main.GCoreQDK.capture_gui_terminated" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Зафиксировать отключение графического интерфейса в логе
+:return: [(id)] (id записи из cm_events_log)</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="gc_qdk.main.GCoreQDK.change_opened_record">
+<span class="sig-name descname"><span class="pre">change_opened_record</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">record_id</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">car_number</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">carrier</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">trash_cat_id</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">trash_type_id</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">comment</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">polygon</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">auto_id</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gc_qdk.main.GCoreQDK.change_opened_record" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Изменить запись. Можно менять все основные параметры.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Параметры</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>record_id</strong> – ID этой записи</p></li>
+<li><p><strong>car_number</strong> – Гос.номер, на который надо поменять (если такой
+машины нет, она будет зарегана, в любом случае,
+в записи будет отображаться только ссылка на это авто.</p></li>
+<li><p><strong>carrier</strong> – ID перевозчика</p></li>
+<li><p><strong>trash_cat_id</strong> – ID категории груза</p></li>
+<li><p><strong>trash_type_id</strong> – ID вида груза</p></li>
+<li><p><strong>comment</strong> – комментарий, который нужно поменять</p></li>
+<li><p><strong>polygon</strong> – Полигон</p></li>
+<li><p><strong>auto_id</strong> – Можно указать ID авто напямую (но, как правило, через
+графический интерфейс поступает гос.номер в виде строки
+(см. car_number))</p></li>
+</ul>
+</dd>
+<dt class="field-even">Результат</dt>
+<dd class="field-even"><p><dl class="simple">
+<dt>В случае успеха:</dt><dd><dl class="simple">
+<dt>{„status“: „success“, „info“: {„status“: „success“,</dt><dd><p>“info“: „Данные успешно изменены“}}</p>
+</dd>
+</dl>
+</dd>
+<dt>В случае провала:</dt><dd><p>{„status“: „failed“, „info“: Python Traceback}</p>
+</dd>
+<dt>Либо:</dt><dd><p>None - если не найден заезд с таким ID</p>
+</dd>
+</dl>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="gc_qdk.main.GCoreQDK.close_external_barrier">
+<span class="sig-name descname"><span class="pre">close_external_barrier</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#gc_qdk.main.GCoreQDK.close_external_barrier" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Закрыть внешний шлагбаум</p>
+<dl class="field-list simple">
+<dt class="field-odd">Результат</dt>
+<dd class="field-odd"><p>{„operation“: „close“, „barrier_name“: „EXTERNAL_GATE“}</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="gc_qdk.main.GCoreQDK.close_internal_barrier">
+<span class="sig-name descname"><span class="pre">close_internal_barrier</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#gc_qdk.main.GCoreQDK.close_internal_barrier" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Закрыть внешний шлагбаум</p>
+<dl class="field-list simple">
+<dt class="field-odd">Результат</dt>
+<dd class="field-odd"><p>{„operation“: „close“, „barrier_name“: „INTERNAL_GATE“}</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="gc_qdk.main.GCoreQDK.close_opened_record">
+<span class="sig-name descname"><span class="pre">close_opened_record</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">record_id</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gc_qdk.main.GCoreQDK.close_opened_record" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Закрыть открытую запись (у которой есть только брутто)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Параметры</dt>
+<dd class="field-odd"><p><strong>record_id</strong> – ID этой записи</p>
+</dd>
+<dt class="field-even">Результат</dt>
+<dd class="field-even"><p><dl class="simple">
+<dt>В случае успеха:</dt><dd><p>id: int</p>
+</dd>
+<dt>В случае провала:</dt><dd><p>None</p>
+</dd>
+</dl>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="gc_qdk.main.GCoreQDK.delete_record">
+<span class="sig-name descname"><span class="pre">delete_record</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">record_id</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gc_qdk.main.GCoreQDK.delete_record" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Удалить заезд</p>
+<dl class="field-list simple">
+<dt class="field-odd">Параметры</dt>
+<dd class="field-odd"><p><strong>record_id</strong> – Идентификатор заезда</p>
+</dd>
+<dt class="field-even">Результат</dt>
+<dd class="field-even"><p></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="gc_qdk.main.GCoreQDK.get_auto_info">
+<span class="sig-name descname"><span class="pre">get_auto_info</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">car_number</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">auto_id</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gc_qdk.main.GCoreQDK.get_auto_info" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Вернуть информацию об авто по его гос.номеру</p>
+<dl class="field-list simple">
+<dt class="field-odd">Параметры</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>auto_id</strong> – Идентификатор авто</p></li>
+<li><p><strong>car_number</strong> – Гос. номер авто</p></li>
+</ul>
+</dd>
+<dt class="field-even">Результат</dt>
+<dd class="field-even"><p><dl class="simple">
+<dt>В случае, если есть данные об авто:</dt><dd><p>Возвращает словарь с данными</p>
+</dd>
+<dt>В случае, если данных нет:</dt><dd><p>Возвращает None</p>
+</dd>
+</dl>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="gc_qdk.main.GCoreQDK.get_history">
+<span class="sig-name descname"><span class="pre">get_history</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">time_start</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time_end</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">trash_cat</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">trash_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">carrier</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">auto_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">polygon</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alerts</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">what_time</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'time_in'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gc_qdk.main.GCoreQDK.get_history" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Получить историю заездов. Если ни один аргумент не указан, то вернется
+история за сегодняшний день, без каких либо фильтров. Указанные же
+аргументы - это фильтры, они суммируются в любом порядке и количестве.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Параметры</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>time_start</strong> – с какой даты учитывать</p></li>
+<li><p><strong>time_end</strong> – по какую дату учитывать</p></li>
+<li><p><strong>trash_cat</strong> – фильтрация по категории груза</p></li>
+<li><p><strong>trash_type</strong> – фильтрация по виду груза</p></li>
+<li><p><strong>carrier</strong> – фильтрация по перевозчику</p></li>
+<li><p><strong>auto_id</strong> – фильтрация по авто</p></li>
+<li><p><strong>polygon</strong> – фильтрация по объекту-приемщику</p></li>
+<li><p><strong>alerts</strong> – фильтрация по наличию алертов</p></li>
+<li><p><strong>what_time</strong> – какую дату брать за учетную (time_in|time_out).
+То есть, time_start и time_end могут быть как время въезда, так и
+время выезда (по умолчанию, это время въезда)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Результат</dt>
+<dd class="field-even"><p><dl class="simple">
+<dt>Если есть заезды по указанным фильтрам:</dt><dd><p>Вернет список словарь, где ключом
+является поле из wdb.records, а значением - содержимое поля</p>
+</dd>
+<dt>Если по указанным фильтрам заездов нет:</dt><dd><p>None</p>
+</dd>
+</dl>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="gc_qdk.main.GCoreQDK.get_last_event">
+<span class="sig-name descname"><span class="pre">get_last_event</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">auto_id</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gc_qdk.main.GCoreQDK.get_last_event" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Получить данные о последнем заезде авто с ID (auto_id)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Параметры</dt>
+<dd class="field-odd"><p><strong>auto_id</strong> – ID авто, по котором нужна информация</p>
+</dd>
+<dt class="field-even">Результат</dt>
+<dd class="field-even"><p><dl class="simple">
+<dt>Если машина найдена:</dt><dd><p>Возвращает словарь с данными о перевозчике, виде груза,
+категории груза и времени с последнего заезда</p>
+</dd>
+<dt>Если же заезда с такой машины не обнаружено:</dt><dd><p>None</p>
+</dd>
+</dl>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="gc_qdk.main.GCoreQDK.get_record_comments">
+<span class="sig-name descname"><span class="pre">get_record_comments</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">record_id</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gc_qdk.main.GCoreQDK.get_record_comments" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Вернуть все комментарии весовщика к данному заезду</p>
+<dl class="field-list simple">
+<dt class="field-odd">Параметры</dt>
+<dd class="field-odd"><p><strong>record_id</strong> – ID заезда</p>
+</dd>
+<dt class="field-even">Результат</dt>
+<dd class="field-even"><p>словарь, где ключ - название комментария,
+значение - его содержимое</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="gc_qdk.main.GCoreQDK.get_record_info">
+<span class="sig-name descname"><span class="pre">get_record_info</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">record_id</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gc_qdk.main.GCoreQDK.get_record_info" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Получить информацию о заезде по его ID</p>
+<dl class="field-list simple">
+<dt class="field-odd">Параметры</dt>
+<dd class="field-odd"><p><strong>record_id</strong> – ID записи</p>
+</dd>
+<dt class="field-even">Результат</dt>
+<dd class="field-even"><p><dl class="simple">
+<dt>Если есть запись с таким ID:</dt><dd><p>{ID: int, auto: auto_id, time_in: date, …}</p>
+</dd>
+<dt>Если же нет:</dt><dd><p>None</p>
+</dd>
+</dl>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="gc_qdk.main.GCoreQDK.get_status">
+<span class="sig-name descname"><span class="pre">get_status</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#gc_qdk.main.GCoreQDK.get_status" title="Ссылка на это определение">¶</a></dt>
+<dd><dl class="simple">
+<dt>Вернуть состояние готовности весовой площадки (есть активные заезды</dt><dd><p>или нет)</p>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Результат</dt>
+<dd class="field-odd"><p>False/True</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="gc_qdk.main.GCoreQDK.get_table_info">
+<span class="sig-name descname"><span class="pre">get_table_info</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">table_name</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">only_active</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gc_qdk.main.GCoreQDK.get_table_info" title="Ссылка на это определение">¶</a></dt>
+<dd><dl class="simple">
+<dt>Вернуть данные о таблице из wdb.</dt><dd><p>Внимание! Не все таблицы доступны, как и не все поля, доступ по
+таблице происходит из белого списка, а по полям, не отправляются те
+поля, которые отмечены в черном списке (например, поле users.password).
+Механизм допуска прописан в модуле gravity_data_worker.</p>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Параметры</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>table_name</strong> – Название нужной таблицы</p></li>
+<li><p><strong>only_active</strong> – Возвращать ли только те поля, у которых поле active
+положительно?</p></li>
+</ul>
+</dd>
+<dt class="field-even">Результат</dt>
+<dd class="field-even"><p><dl class="simple">
+<dt>В случае успеха:</dt><dd><p>{„status“: „success“, info: [<em>список заездов</em>]}</p>
+</dd>
+<dt>В случае, когда к данным таблицы доступ запрещен:</dt><dd><dl class="simple">
+<dt>{„status“: „failed“, „info“: „У вас нет доступа к просмотру</dt><dd><p>информации с данной таблицы!“, „tablename“: <em>tablename</em>}</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="gc_qdk.main.GCoreQDK.get_unfinished_records">
+<span class="sig-name descname"><span class="pre">get_unfinished_records</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#gc_qdk.main.GCoreQDK.get_unfinished_records" title="Ссылка на это определение">¶</a></dt>
+<dd><dl class="simple">
+<dt>Вернуть список, содержащий словари, каждый из которых описывает заезд,</dt><dd><p>который еще не завершен (без тары)</p>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Результат</dt>
+<dd class="field-odd"><p><dl class="simple">
+<dt>Если есть незакрытые заезды:</dt><dd><p>Вернет список словарь, где ключом
+является поле из wdb.records, а значением - содержимое поля</p>
+</dd>
+<dt>Если незакрытых заездов нет:</dt><dd><p>None</p>
+</dd>
+</dl>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="gc_qdk.main.GCoreQDK.open_external_barrier">
+<span class="sig-name descname"><span class="pre">open_external_barrier</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#gc_qdk.main.GCoreQDK.open_external_barrier" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Открыть внешний шлагбаум</p>
+<dl class="field-list simple">
+<dt class="field-odd">Результат</dt>
+<dd class="field-odd"><p>{„operation“: „open“, „barrier_name“: „EXTERNAL_GATE“}</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="gc_qdk.main.GCoreQDK.open_internal_barrier">
+<span class="sig-name descname"><span class="pre">open_internal_barrier</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#gc_qdk.main.GCoreQDK.open_internal_barrier" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Открыть внешний шлагбаум</p>
+<dl class="field-list simple">
+<dt class="field-odd">Результат</dt>
+<dd class="field-odd"><p>{„operation“: „open“, „barrier_name“: „INTERNAL_GATE“}</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="gc_qdk.main.GCoreQDK.operate_barrier">
+<span class="sig-name descname"><span class="pre">operate_barrier</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">barrier_name</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">operation</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gc_qdk.main.GCoreQDK.operate_barrier" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Произвести работу со шлагбаумами (открыть или закрыть)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Параметры</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>barrier_name</strong> – Название шлагбаума. Обычно он носит вид,
+типа «НАПРАВЛЕНИЕ_ИМЯ» (EXTERNAL_BARRIER)</p></li>
+<li><p><strong>operation</strong> – (close|open) Открыть или закрыть шлагбаум</p></li>
+</ul>
+</dd>
+<dt class="field-even">Результат</dt>
+<dd class="field-even"><p></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="gc_qdk.main.GCoreQDK.response_operator">
+<span class="sig-name descname"><span class="pre">response_operator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">function_dist</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gc_qdk.main.GCoreQDK.response_operator" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Обработчик ответов от GCore. Запускается параллельным потоком.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Параметры</dt>
+<dd class="field-odd"><p><strong>function_dist</strong> – словарь, где ключом является метод,
+который вернул ответ, а значением - какая то функция,
+которая должна такой ответ обработать.
+При этом функции передается весь этот ответ</p>
+</dd>
+<dt class="field-even">Результат</dt>
+<dd class="field-even"><p>возвращает результат выполнения функции в значении ключа</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="gc_qdk.main.GCoreQDK.restart_core">
+<span class="sig-name descname"><span class="pre">restart_core</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#gc_qdk.main.GCoreQDK.restart_core" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Перезапустить Gravity Core Compound</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="gc_qdk.main.GCoreQDK.set_resp_operator_dict">
+<span class="sig-name descname"><span class="pre">set_resp_operator_dict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">response_operator_dict</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">dict</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gc_qdk.main.GCoreQDK.set_resp_operator_dict" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Установить словарь операторов ответов</p>
+<dl class="field-list simple">
+<dt class="field-odd">Параметры</dt>
+<dd class="field-odd"><p><strong>response_operator_dict</strong> – </p>
+</dd>
+<dt class="field-even">Результат</dt>
+<dd class="field-even"><p></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="gc_qdk.main.GCoreQDK.start_response_operator">
+<span class="sig-name descname"><span class="pre">start_response_operator</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#gc_qdk.main.GCoreQDK.start_response_operator" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Запустить оператор ответов</p>
+<dl class="field-list simple">
+<dt class="field-odd">Результат</dt>
+<dd class="field-odd"><p></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="gc_qdk.main.GCoreQDK.start_round">
+<span class="sig-name descname"><span class="pre">start_round</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">car_number</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">course</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">car_choose_mode</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dlinnomer</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">polomka</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">carrier</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">trash_cat</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">trash_type</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">notes</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">operator</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">duo_polygon</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gc_qdk.main.GCoreQDK.start_round" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Отдать команду на начало раунда взвешивания</p>
+<dl class="field-list simple">
+<dt class="field-odd">Параметры</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>car_number</strong> – гос. номер, в строковом представлении,
+типа «A111AA702»</p></li>
+<li><p><strong>course</strong> – направление, с какой стороны стоит машина
+(external/internal)</p></li>
+<li><p><strong>car_choose_mode</strong> – спсособ инициации заезда (auto/manual),
+если auto - значит система сама увидела машину,
+если manual - значит заезд инициируют вручную</p></li>
+<li><p><strong>dlinnomer</strong> – Спец. проткол «Длинномер» (True/False)</p></li>
+<li><p><strong>polomka</strong> – Спец. протокол «Поломка» (True/False)</p></li>
+<li><p><strong>carrier</strong> – ID перевозчика</p></li>
+<li><p><strong>trash_cat</strong> – ID категории груза</p></li>
+<li><p><strong>trash_type</strong> – ID вида груза</p></li>
+<li><p><strong>notes</strong> – Комментарий весовщика</p></li>
+<li><p><strong>operator</strong> – ID весовщика</p></li>
+<li><p><strong>duo_polygon</strong> – ID объекта, принимающего груз</p></li>
+</ul>
+</dd>
+<dt class="field-even">Результат</dt>
+<dd class="field-even"><p><dl class="simple">
+<dt>В случае успеха:</dt><dd><p>{„status“: True, „info“: „Поток выполнения запущен успешно“,
+„record_id“: <em>id: int</em>};</p>
+</dd>
+<dt>В случае провала (уже активен заезд):</dt><dd><p>{„status“: False, „info“: „GCore занят в данный момент“, „record_id“:
+<em>id: int</em>}</p>
+</dd>
+</dl>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="gc_qdk.main.GCoreQDK.try_auth_user">
+<span class="sig-name descname"><span class="pre">try_auth_user</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">username</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">password</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gc_qdk.main.GCoreQDK.try_auth_user" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Попытка аутентификации весовщика через графический интерфейс</p>
+<dl class="field-list simple">
+<dt class="field-odd">Параметры</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>username</strong> – Логин пользователя</p></li>
+<li><p><strong>password</strong> – Пароль пользователя</p></li>
+</ul>
+</dd>
+<dt class="field-even">Результат</dt>
+<dd class="field-even"><p><dl class="simple">
+<dt>В случае успешной аутентификации юзера:</dt><dd><p>{„status“: True, „info“: id: int}</p>
+</dd>
+<dt>В случае, если логин или пароль не верные:</dt><dd><p>{„status“: False, „info“: None}</p>
+</dd>
+</dl>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="gc_qdk.main.GCoreQDK.unblock_external_photocell">
+<span class="sig-name descname"><span class="pre">unblock_external_photocell</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#gc_qdk.main.GCoreQDK.unblock_external_photocell" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Разблокировать внешний фотоэлемент</p>
+<dl class="field-list simple">
+<dt class="field-odd">Результат</dt>
+<dd class="field-odd"><p></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="gc_qdk.main.GCoreQDK.unblock_internal_photocell">
+<span class="sig-name descname"><span class="pre">unblock_internal_photocell</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#gc_qdk.main.GCoreQDK.unblock_internal_photocell" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Разблокировать внутренний фотоэлемент</p>
+<dl class="field-list simple">
+<dt class="field-odd">Результат</dt>
+<dd class="field-odd"><p></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="response.html" class="btn btn-neutral float-right" title="Ответы от Gravity Compound" accesskey="n" rel="next">Следующая <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="getting_started.html" class="btn btn-neutral float-left" title="Начало работы" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Предыдущая</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, PunchyArchy.
+
+    </p>
+  </div> 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

@@ -1,0 +1,244 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="ru" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Общее описание &mdash; документация Gravity Compound QDK 1</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/translations.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Алфавитный указатель" href="genindex.html" />
+    <link rel="search" title="Поиск" href="search.html" />
+    <link rel="next" title="Установка" href="installation.html" />
+    <link rel="prev" title="Welcome to Gravity Compound Qodex Development Kit’s documentation!" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Gravity Compound QDK
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.0.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Поиск в документации" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Общее описание</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#gravity-compound-qdk">Знакомство с Gravity Compound QDK.</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Установка</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting_started.html">Начало работы</a></li>
+<li class="toctree-l1"><a class="reference internal" href="functions.html">Реестр методов</a></li>
+<li class="toctree-l1"><a class="reference internal" href="response.html">Ответы от Gravity Compound</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Gravity Compound QDK</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Общее описание</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/general_description.rst.txt" rel="nofollow"> Просмотреть исходный код страницы</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="id1">
+<h1>Общее описание<a class="headerlink" href="#id1" title="Ссылка на этот заголовок">¶</a></h1>
+<div class="section" id="gravity-compound-qdk">
+<h2>Знакомство с Gravity Compound QDK.<a class="headerlink" href="#gravity-compound-qdk" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Gravity Compound QDK (<em>полн. Gravity Compound Qodex Development Kit, далее GC QDK</em>) - это
+дочерний класс QDK <a class="footnote-reference brackets" href="#id5" id="id2">1</a>, который является удобным и легким иснтрументом для
+взаимодействия с Gravity Compound <a class="footnote-reference brackets" href="#id6" id="id3">2</a>.</p>
+<p>Ее основная цель: максимально облегчить работу с Gravity Compound для разработчкиов, сводя всю работу к вызовам встроенных функций, отправляющих запросы в GC и обработке ответов.</p>
+<p>GC QDK может использоваться:</p>
+<ul class="simple">
+<li><p>На стороне клиента (весовщика), посредством приложений, которые позволяют клиенту взаимодействовать с Gravity Compound через графический интерфейс. (<em>например, WEB приложение или иное ПО</em>).</p></li>
+<li><p>На стороне WServer <a class="footnote-reference brackets" href="#id7" id="id4">3</a>, для доставки данных в Gravity Compound.</p></li>
+</ul>
+<p>Полный перечень функционала, используемый в обоих случаех будет приведен в следующих главах.</p>
+<div class="admonition important">
+<p class="admonition-title">Важно</p>
+<p>QC QDK в данный момент находится в стадии разработки, однако
+данная документация актуальна всегда, в силу автоматического его обновления.</p>
+</div>
+<dl class="footnote brackets">
+<dt class="label" id="id5"><span class="brackets"><a class="fn-backref" href="#id2">1</a></span></dt>
+<dd><p>QDK (<em>Qodex Development Kit</em>) - модуль, который создан для быстрого создания всякого рода SDK (<em>набора средств разработки</em>). Pаботает с QPI (<em>Qodex programming interface</em>), который является подключаемым модулем для проектов, нуждающихся в API.</p>
+</dd>
+<dt class="label" id="id6"><span class="brackets"><a class="fn-backref" href="#id3">2</a></span></dt>
+<dd><p>Gravity Compound - это программное ядро аппаратно-программного комплекса Gravity, которое производит всю автоматизацию на весовой площадке.</p>
+</dd>
+<dt class="label" id="id7"><span class="brackets"><a class="fn-backref" href="#id4">3</a></span></dt>
+<dd><p>WServer - программный аргреататор, занимающийся приемом, обработкой, хранением всех данных, поступающих с весовой площадки.</p>
+</dd>
+</dl>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="installation.html" class="btn btn-neutral float-right" title="Установка" accesskey="n" rel="next">Следующая <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="index.html" class="btn btn-neutral float-left" title="Welcome to Gravity Compound Qodex Development Kit’s documentation!" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Предыдущая</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, PunchyArchy.
+
+    </p>
+  </div> 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

@@ -1,0 +1,239 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="ru" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Ответы от Gravity Compound &mdash; документация Gravity Compound QDK 1</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/translations.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Алфавитный указатель" href="genindex.html" />
+    <link rel="search" title="Поиск" href="search.html" />
+    <link rel="prev" title="Реестр методов" href="functions.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Gravity Compound QDK
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.0.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Поиск в документации" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="general_description.html">Общее описание</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Установка</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting_started.html">Начало работы</a></li>
+<li class="toctree-l1"><a class="reference internal" href="functions.html">Реестр методов</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Ответы от Gravity Compound</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id1">Описание</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id2">Типовое содержимое ответа</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Gravity Compound QDK</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Ответы от Gravity Compound</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/response.rst.txt" rel="nofollow"> Просмотреть исходный код страницы</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="gravity-compound">
+<h1>Ответы от Gravity Compound<a class="headerlink" href="#gravity-compound" title="Ссылка на этот заголовок">¶</a></h1>
+<div class="section" id="id1">
+<h2>Описание<a class="headerlink" href="#id1" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Ответы от Gravity Compound получаются через сокеты, посредством общения модулей QPI и QDK (тип данных и протокол общения здесь роли не играют, но, если есть интерес, можно прочитать про это в документации к этим модулям.)</p>
+<p>Функция для получения ответа:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="hll"><span class="n">get_data</span><span class="p">()</span>
+</span></pre></div>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Предупреждение</p>
+<p>Поскольку get_data - это более высокоуровневая функция, обращаемая к socket.recv(), имейте в виду, что если ответа от GC не будет, поток выполнения «застрянет» в его ожидании.
+Что бы такого не происходило, стоит сделать обработку ответов от GC в параллельном потоке.</p>
+</div>
+</div>
+<div class="section" id="id2">
+<h2>Типовое содержимое ответа<a class="headerlink" href="#id2" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Итоговой ответ, который возвращает функция <em>get_data()</em> - это словарь, вида:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="hll"> <span class="p">{</span><span class="s1">&#39;status&#39;</span><span class="p">:</span> <span class="nb">bool</span><span class="p">,</span> <span class="s1">&#39;info&#39;</span><span class="p">:</span> <span class="nb">any</span><span class="p">,</span> <span class="s1">&#39;core_method&#39;</span><span class="p">:</span> <span class="nb">str</span><span class="p">}</span>
+</span></pre></div>
+</div>
+<ul class="simple">
+<li><p>Значением ключа status является булево выражение, True или False, отображающее успешность выполнения функции.</p></li>
+<li><p>Значением ключа info является сам результат выполнения метода на стороне GC. Значение это не регулируется по типу, и может быть каким угодно, это стоит учитывать при создании обработчика ответов.</p></li>
+<li><p>Значением ключа core_method является название метода GC, которое было выполнено и вернуло ответ, являющийся значением ключа info в текущем массиве.</p></li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="functions.html" class="btn btn-neutral float-left" title="Реестр методов" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Предыдущая</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, PunchyArchy.
+
+    </p>
+  </div> 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
