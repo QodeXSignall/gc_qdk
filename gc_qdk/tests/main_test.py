@@ -208,7 +208,8 @@ class MainTest(unittest.TestCase):
 
     def test_add_auto(self):
         self.qdk.add_auto(car_number='В000ВВ001', wserver_id=9999999, model=0,
-                          rfid='AAAAAA0004', id_type='tails', rg_weight=0)
+                          rfid='AAAAAA0004', id_type='tails', rg_weight=0,
+                          rfid_id=int)
         add_auto_response = self.qdk.get_data()
         print(add_auto_response)
         self.assertTrue(add_auto_response['info']['status'] == 'success')

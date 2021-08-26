@@ -330,10 +330,11 @@ class GCoreQDK(QDK):
                             ex_id=ex_id, status=status, wserver_id=wserver_id)
 
     def add_auto(self, car_number, wserver_id, model, rfid, id_type,
-                 rg_weight):
+                 rg_weight, rfid_id=None):
         """
         Добавить новое авто
 
+        :param rfid_id: ID RFID (необязательно.)
         :param car_number: Гос.номер авто
         :param wserver_id: ID авто из базы GDB
         :param model: Модель авто
@@ -348,7 +349,7 @@ class GCoreQDK(QDK):
         """
         self.execute_method('add_auto', car_number=car_number, model=model,
                             rfid=rfid, id_type=id_type, rg_weight=rg_weight,
-                            wserver_id=wserver_id)
+                            wserver_id=wserver_id, rfid_id=rfid_id)
 
     def add_trash_cat(self, cat_name, wserver_id):
         """
