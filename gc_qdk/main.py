@@ -329,8 +329,28 @@ class GCoreQDK(QDK):
         self.execute_method('add_new_carrier', name=name, inn=inn, kpp=kpp,
                             ex_id=ex_id, status=status, wserver_id=wserver_id)
 
+    def upd_carrier(self, client_id, name=None, active=None,
+                    wserver_id=None, status=None, inn=None,
+                    kpp=None, ex_id=None):
+        """
+        Обновить компанию-перевозчика.
+
+        :param client_id: ID компании.
+        :param name: Изменить имя.
+        :param active: Изменить активность.
+        :param wserver_id: Изменить WServer ID.
+        :param status: Изменить статус компании.
+        :param inn: Изменить ИНН.
+        :param kpp: Изменить КПП.
+        :param ex_id: Изменить ID внешней системы.
+        :return:
+        """
+        self.execute_method('upd_carrier', client_id=client_id, name=name,
+                            active=active, wserver_id=wserver_id,
+                            status=status, inn=inn, kpp=kpp, ex_id=ex_id)
+
     def add_auto(self, car_number, wserver_id, model, rfid, id_type,
-                 rg_weight, rfid_id=None):
+                 rg_weight, rfid_id=None, **kwargs):
         """
         Добавить новое авто
 
@@ -351,6 +371,29 @@ class GCoreQDK(QDK):
                             rfid=rfid, id_type=id_type, rg_weight=rg_weight,
                             wserver_id=wserver_id, rfid_id=rfid_id)
 
+    def upd_auto(self, auto_id, car_number=None, rfid=None, id_type=None,
+                 rg_weight=None, wserver_id=None, auto_model=None,
+                 active=None, *args, **kwargs):
+        """
+        Обновить авто.
+
+        :param auto_id: ID авто.
+        :param car_number: Изменить гос. номер.
+        :param rfid: Изменить RFID номер.
+        :param id_type: Изменить вид протокола.
+        :param rg_weight: Изменить справочный вес.
+        :param wserver_id: Изменить WServer ID.
+        :param auto_model: Изменить модель авто.
+        :param active: Изменить активность записи.
+        :param args:
+        :param kwargs:
+        :return:
+        """
+        self.execute_method('upd_auto', car_number=car_number, rfid=rfid,
+                            id_type=id_type, rg_weight=rg_weight,
+                            wserver_id=wserver_id, auto_model=auto_model,
+                            active=active)
+
     def add_trash_cat(self, cat_name, wserver_id):
         """
         Добавить новую категорию груза
@@ -365,6 +408,20 @@ class GCoreQDK(QDK):
         """
         self.execute_method('add_trash_cat', cat_name=cat_name,
                             wserver_id=wserver_id)
+
+    def upd_trash_cat(self, cat_id, name=None, active=None,
+                      wserver_id=None):
+        """
+        Обновить категорию груза.
+
+        :param cat_id: ID категории.
+        :param name: Изменить имя.
+        :param active: Изменить активность.
+        :param wserver_id: Изменить WServer ID.
+        :return:
+        """
+        self.execute_method('upd_trash_cat', cat_id=cat_id, name=name,
+                            active=active, wserver_id=wserver_id)
 
     def add_trash_type(self, type_name, wserver_id, wserver_cat_id):
         """
@@ -384,6 +441,22 @@ class GCoreQDK(QDK):
                             wserver_cat_id=wserver_cat_id,
                             wserver_id=wserver_id)
 
+    def upd_trash_type(self, type_id, name=None, category=None, active=None,
+                       wserver_id=None):
+        """
+        Обновить вид груза.
+
+        :param type_id: ID вида груза.
+        :param name: Изменить имя.
+        :param category: Изменить категорию.
+        :param active: Изменить активность.
+        :param wserver_id: Изменить WServer ID.
+        :return:
+        """
+        return self.execute_method('upd_trash_type', type_id=type_id,
+                                   name=name, category=category, active=active,
+                                   wserver_id=wserver_id)
+
     def add_operator(self, full_name, username, password, wserver_id):
         """
         Добавить нового пользователя (весовщика)
@@ -401,6 +474,23 @@ class GCoreQDK(QDK):
         self.execute_method('add_operator', full_name=full_name,
                             username=username, password=password,
                             wserver_id=wserver_id)
+
+    def upd_operator(self, user_id, username=None, password=None,
+                     full_name=None, wserver_id=None, active=None):
+        """
+        Изменить данные весовщика (пользователя).
+
+        :param user_id: ID весовщика (пользователя).
+        :param username: Изменить логин.
+        :param password: Изменить пароль.
+        :param full_name: Изменить ФИО.
+        :param wserver_id: Изменить wserver_id
+        :param active:
+        :return:
+        """
+        self.execute_method('upd_operator', user_id=user_id, username=username,
+                            password=password, full_name=full_name,
+                            wserver_id=wserver_id, active=active)
 
     def get_record_info(self, record_id: int):
         """

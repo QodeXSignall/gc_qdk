@@ -15,9 +15,8 @@ class MainTest(unittest.TestCase):
     def test_start_round(self):
         self.qdk.start_round('В060ХА702', 'external', 'auto')
         count = 0
-        self.qdk.subscribe()
         while True:
-            print("RESPONSE:", self.qdk.get_response())
+            print("RESPONSE:", self.qdk.get_data())
             count += 1
             if count == 10:
                 self.qdk.start_round('В060ХА702', 'external', 'auto')
@@ -190,6 +189,11 @@ class MainTest(unittest.TestCase):
                               wserver_id=1377)
         add_user_response = self.qdk.get_data()
         self.assertTrue(add_user_response['info']['status'] == 'success')
+
+    def test_upd_user(self):
+        self.qdk.upd_operator(5, full_name='Изменено с QDK')
+        response = self.qdk.get_data()
+        print(response)
 
     def test_add_trash_cat(self):
         self.qdk.add_trash_cat('TEST_TRASH_CAT_1', wserver_id=1337)
