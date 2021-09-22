@@ -193,7 +193,6 @@ class MainTest(unittest.TestCase):
     def test_upd_user(self):
         self.qdk.upd_operator(5, full_name='Изменено с QDK')
         response = self.qdk.get_data()
-        print(response)
 
     def test_add_trash_cat(self):
         self.qdk.add_trash_cat('TEST_TRASH_CAT_1', wserver_id=1337)
@@ -263,6 +262,10 @@ class MainTest(unittest.TestCase):
         self.qdk.get_auto_info(auto_id=59)
         resp_succ = self.qdk.get_data()
 
+    def test_get_wserver_id(self):
+        self.qdk.get_wserver_id('users', 5)
+        response = self.qdk.get_data()
+        print(response)
 
 if __name__ == '__main__':
     unittest.main()

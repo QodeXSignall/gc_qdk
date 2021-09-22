@@ -580,6 +580,17 @@ class GCoreQDK(QDK):
         """
         self.execute_method('delete_record', record_id=record_id)
 
+    def get_wserver_id(self, table_name, wdb_id):
+        """
+        Извлечь wserver_id записи по его id.
+
+        :param table_name: Название таблицы.
+        :param wdb_id: ID искомых данных.
+        :return:
+        """
+        self.execute_method('get_wserver_id', table_name=table_name,
+                            wdb_id=wdb_id)
+
     def response_operator(self, function_dist):
         """
         Обработчик ответов от GCore. Запускается параллельным потоком.
