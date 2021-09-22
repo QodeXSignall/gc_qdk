@@ -3,7 +3,7 @@ from setuptools import setup
 
 setup(
     name='gc_qdk',
-    version='0.0.4',
+    version='0.0.5',
     packages=['gc_qdk'],
     install_requires=['qdk',
                       'psycopg2'],

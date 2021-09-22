@@ -392,7 +392,7 @@ class GCoreQDK(QDK):
         self.execute_method('upd_auto', car_number=car_number, rfid=rfid,
                             id_type=id_type, rg_weight=rg_weight,
                             wserver_id=wserver_id, auto_model=auto_model,
-                            active=active)
+                            active=active, auto_id=auto_id)
 
     def add_trash_cat(self, cat_name, wserver_id):
         """
